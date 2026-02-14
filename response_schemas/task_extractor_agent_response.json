@@ -1,0 +1,18 @@
+{
+  "agent_name": "Task Extractor Agent",
+  "agent_id": "6990bce6ac906c9d68129086",
+  "description": "Analyzes each sent message to detect actionable items, tasks, action verbs, deadlines, or assignments. Returns extracted task title and optional due date if task detected, null if no task present.",
+  "agent_type": "json",
+  "accessor": "result",
+  "auto_generated": true,
+  "response_schema": {
+    "hasTask": "boolean",
+    "taskTitle": "string",
+    "dueDate": "string"
+  },
+  "example_response": {
+    "hasTask": false,
+    "taskTitle": "The extracted task title if a task was detected, empty string if not",
+    "dueDate": "Optional due date extracted from the message, empty string if none"
+  }
+}
