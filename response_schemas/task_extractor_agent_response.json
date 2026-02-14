@@ -1,18 +1,62 @@
 {
-  "agent_name": "Task Extractor Agent",
+  "agent_name": "Message Intelligence Agent",
   "agent_id": "6990bce6ac906c9d68129086",
-  "description": "Analyzes each sent message to detect actionable items, tasks, action verbs, deadlines, or assignments. Returns extracted task title and optional due date if task detected, null if no task present.",
+  "description": "Analyzes each sent message to detect four patterns: actionable tasks, follow-up questions, team decisions, and meeting scheduling. Returns structured multi-pattern detection results.",
   "agent_type": "json",
   "accessor": "result",
   "auto_generated": true,
   "response_schema": {
-    "hasTask": "boolean",
-    "taskTitle": "string",
-    "dueDate": "string"
+    "task": {
+      "detected": "boolean",
+      "title": "string",
+      "dueDate": "string",
+      "assignee": "string"
+    },
+    "followUp": {
+      "detected": "boolean",
+      "question": "string",
+      "directedAt": "string",
+      "suggestedReply": "string"
+    },
+    "decision": {
+      "detected": "boolean",
+      "summary": "string",
+      "madeBy": "string",
+      "context": "string"
+    },
+    "meeting": {
+      "detected": "boolean",
+      "topic": "string",
+      "time": "string",
+      "participants": "string",
+      "suggestedAgenda": "string"
+    }
   },
   "example_response": {
-    "hasTask": false,
-    "taskTitle": "The extracted task title if a task was detected, empty string if not",
-    "dueDate": "Optional due date extracted from the message, empty string if none"
+    "task": {
+      "detected": true,
+      "title": "Review the PR and deploy to staging",
+      "dueDate": "by EOD Friday",
+      "assignee": "Sarah"
+    },
+    "followUp": {
+      "detected": true,
+      "question": "Can you review the PR?",
+      "directedAt": "Sarah",
+      "suggestedReply": "Sure, I will review the PR and get back to you by EOD."
+    },
+    "decision": {
+      "detected": true,
+      "summary": "Go with React for the frontend framework",
+      "madeBy": "Team lead",
+      "context": "After evaluating Vue and React, the team agreed React fits better with existing infrastructure."
+    },
+    "meeting": {
+      "detected": true,
+      "topic": "Sprint planning",
+      "time": "Monday at 2pm",
+      "participants": "Sarah, Mike, the team",
+      "suggestedAgenda": "1. Review completed tasks from last sprint. 2. Prioritize backlog items. 3. Assign tasks for new sprint."
+    }
   }
 }

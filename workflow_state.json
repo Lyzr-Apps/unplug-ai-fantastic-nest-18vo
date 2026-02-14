@@ -2,7 +2,7 @@
   "agents": [
     {
       "agent_id": "6990bce6ac906c9d68129086",
-      "agent_name": "Task Extractor Agent",
+      "agent_name": "Message Intelligence Agent",
       "agent_type": "json",
       "provider": "Anthropic",
       "model": "claude-sonnet-4-5",
@@ -14,9 +14,31 @@
       "has_image_output": false,
       "has_file_output": false,
       "response_schema": {
-        "hasTask": "boolean",
-        "taskTitle": "string",
-        "dueDate": "string"
+        "task": {
+          "detected": "boolean",
+          "title": "string",
+          "dueDate": "string",
+          "assignee": "string"
+        },
+        "followUp": {
+          "detected": "boolean",
+          "question": "string",
+          "directedAt": "string",
+          "suggestedReply": "string"
+        },
+        "decision": {
+          "detected": "boolean",
+          "summary": "string",
+          "madeBy": "string",
+          "context": "string"
+        },
+        "meeting": {
+          "detected": "boolean",
+          "topic": "string",
+          "time": "string",
+          "participants": "string",
+          "suggestedAgenda": "string"
+        }
       }
     }
   ],

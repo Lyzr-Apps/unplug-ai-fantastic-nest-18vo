@@ -9,13 +9,13 @@
     {
       "id": "task_extractor_agent",
       "type": "Agent",
-      "label": "Task Extractor Agent",
+      "label": "Message Intelligence Agent",
       "nodeCategory": "agent"
     },
     {
       "id": "output_node",
       "type": "Output",
-      "label": "Task Extraction Result",
+      "label": "Multi-Pattern Detection Result",
       "nodeCategory": "end"
     }
   ],
